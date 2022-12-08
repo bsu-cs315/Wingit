@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://lootbox/lootboxLoot/food.gd" type="Script" id=1]
+[ext_resource path="res://lootbox/lootboxLoot/79_pancakes.png" type="Texture" id=2]
+[ext_resource path="res://lootbox/lootboxLoot/pearl_01a.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 41.1947
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("foodSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pearl01a:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "floating"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("foodSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pearl01a:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=["food"]]
+input_pickable = true
+
+[node name="Pearl01a" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 0, -10 )
+scale = Vector2( 5.25, 5.25 )
+texture = ExtResource( 3 )
+
+[node name="foodSprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 0, -10 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
+autoplay = "floating"
+anims/RESET = SubResource( 2 )
+anims/floating = SubResource( 3 )
+
+[connection signal="mouse_entered" from="KinematicBody2D" to="." method="_on_KinematicBody2D_mouse_entered"]

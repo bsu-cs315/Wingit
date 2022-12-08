@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://people/workerTroop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Squad/workerTroopSquad.gd" type="Script" id=2]
+[ext_resource path="res://Squad/buttonRound_grey.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 115.434
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0, 0, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="Theme" id=5]
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = SubResource( 3 )
+ProgressBar/styles/fg = SubResource( 4 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 381.838
+
+[node name="workerTroopSquad" type="KinematicBody2D" groups=["ally"]]
+scale = Vector2( 0.5, 0.5 )
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="ButtonRoundGrey" type="Sprite" parent="."]
+position = Vector2( -1.52588e-05, 1.52588e-05 )
+scale = Vector2( 7.35714, 8.02631 )
+texture = ExtResource( 3 )
+
+[node name="ButtonRoundGrey2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 16 )
+scale = Vector2( 17.0393, 16.8246 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -46 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -75, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 75 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 75, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -58.0
+margin_top = -206.0
+margin_right = 64.0
+margin_bottom = -186.0
+theme = SubResource( 5 )
+value = 80.0
+percent_visible = false
+
+[node name="mineTimer" type="Timer" parent="."]
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource( 6 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_workerTroopSquad_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_workerTroopSquad_mouse_exited"]
+[connection signal="timeout" from="mineTimer" to="." method="_on_mineTimer_timeout"]
+[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]

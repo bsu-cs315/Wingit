@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://people/person.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Squad/MeeleTroopSquad.gd" type="Script" id=2]
+[ext_resource path="res://Squad/buttonRound_grey.png" type="Texture" id=3]
+[ext_resource path="res://Squad/barGreen_verticalTop.png" type="Texture" id=4]
+[ext_resource path="res://Squad/barGreen_verticalBottom.png" type="Texture" id=5]
+[ext_resource path="res://Squad/arrowBeige_right.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 251.149
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 126.254
+
+[sub_resource type="Theme" id=3]
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+
+[node name="MeeleTroopSquad" type="KinematicBody2D" groups=["ally"]]
+scale = Vector2( 0.5, 0.5 )
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="AgroRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange"]
+position = Vector2( -2, -44 )
+shape = SubResource( 2 )
+
+[node name="ButtonRoundGrey2" type="Sprite" parent="AgroRange"]
+visible = false
+position = Vector2( 3.8147e-06, -23 )
+scale = Vector2( 13.8286, 13.9474 )
+texture = ExtResource( 3 )
+
+[node name="BarGreenVerticalBottom" type="Sprite" parent="."]
+position = Vector2( 0, 10 )
+scale = Vector2( 8.88889, 9.83333 )
+texture = ExtResource( 5 )
+
+[node name="BarGreenVerticalTop" type="Sprite" parent="BarGreenVerticalBottom"]
+position = Vector2( -1.49012e-08, -8.94915 )
+texture = ExtResource( 4 )
+
+[node name="ButtonRoundGrey" type="Sprite" parent="."]
+position = Vector2( 0, -28 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 75, 0 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 75 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -75, 0 )
+
+[node name="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -75 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, -44 )
+shape = SubResource( 1 )
+
+[node name="ArrowBeigeRight" type="Sprite" parent="."]
+position = Vector2( 0, -270 )
+rotation = 1.5708
+z_index = 10
+texture = ExtResource( 6 )
+
+[node name="ProgressBar" type="ProgressBar" parent="." groups=["ally"]]
+margin_left = -86.0
+margin_top = -210.0
+margin_right = 90.0
+margin_bottom = -192.0
+theme = SubResource( 3 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+step = 0.0
+value = 80.0
+rounded = true
+percent_visible = false
+
+[node name="attackTimer" type="Timer" parent="."]
+
+[node name="deathTimer" type="Timer" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_MeeleTroopSquad_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_MeeleTroopSquad_mouse_exited"]
+[connection signal="body_entered" from="AgroRange" to="." method="_on_AgroRange_body_entered"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_deathTimer_timeout"]

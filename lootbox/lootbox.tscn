@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://lootbox/tile_0091.png" type="Texture" id=1]
+[ext_resource path="res://lootbox/tile_0092.png" type="Texture" id=2]
+[ext_resource path="res://lootbox/tile_0089.png" type="Texture" id=3]
+[ext_resource path="res://lootbox/tile_0090.png" type="Texture" id=4]
+[ext_resource path="res://lootbox/lootbox.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 5, 5 )
+frames = SubResource( 1 )
+
+[node name="queueFreeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="queueFreeTimer" to="." method="_on_queueFreeTimer_timeout"]
