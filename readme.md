@@ -32,7 +32,7 @@ For this iteration I really tried to scale back a bit and gameify it up a lot. I
 - [X] A-3: Earn <em>N</em>*&lceil;<em>P</em>/2&rceil; stars, where <em>N</em> is the iteration number and <em>P</em> is the number of people on the team.
 
 <h3>Stars</h3>
-Include a dynamic (non-static) camera
-  The player has the abilty to move the camera
+<p>Include a dynamic (non-static) camera</p>
+ <p> The player has the abilty to move the camera</p>
  
 Therefore this work merits an A
