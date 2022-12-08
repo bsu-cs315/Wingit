@@ -23,4 +23,5 @@ func _process(_delta):
 
 
 func processDeath():
-	pass
+	
+	get_parent().get_node("HUD").lostHUD.visible = true

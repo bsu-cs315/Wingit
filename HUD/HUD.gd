@@ -75,3 +75,11 @@ func _on_cannonBuyButton_mouse_entered():
 
 func _on_cannonBuyButton_mouse_exited():
 	$CanvasLayer/buyCannonLabel.visible = false
+
+
+func _on_mainMenuButton_button_up():
+	get_tree().change_scene("res://MainMenu/mainMenu.tscn")
+
+
+func _on_restartButton_button_up():
+	get_tree().change_scene("res://MainScene/Main.tscn")
