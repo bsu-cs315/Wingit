@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://HUD/Phoenix Gaming.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://MainMenu/mainMenu.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 276
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 54
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "FlyIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -300 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -300 ) ]
+}
+
+[node name="mainMenu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 0, -300 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D"]
+margin_left = 325.0
+margin_top = 1.0
+margin_right = 1127.0
+margin_bottom = 311.0
+custom_fonts/font = SubResource( 1 )
+text = "Wingin It"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 635.0
+margin_top = 545.0
+margin_right = 861.0
+margin_bottom = 645.0
+custom_fonts/font = SubResource( 2 )
+text = "Start Game"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FlyIn"
+anims/FlyIn = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_Button_button_up"]

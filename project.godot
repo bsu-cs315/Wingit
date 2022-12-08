@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="WinginIt"
-run/main_scene="res://MainScene/Main.tscn"
+run/main_scene="res://MainMenu/mainMenu.tscn"
 
 [display]
 
