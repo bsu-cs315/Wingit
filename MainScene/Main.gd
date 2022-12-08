@@ -3,6 +3,7 @@ extends Node2D
 var coins = 3
 var metal = 0
 var food = 3
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +13,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	applyHUDChanges()
+	if $mainBase.dead:
+		$HUD/CanvasLayer/lostHUD.visible = true
+		
+	if !$mainBase.dead:
+		score += 1
 
 
 func _on_SpawnTimer_timeout():
@@ -36,3 +42,4 @@ func applyHUDChanges():
 	$HUD/CanvasLayer/coinsLabel.text = "X : " + str(coins)
 	$HUD/CanvasLayer/metalLabel.text = "X : " + str(metal)
 	$HUD/CanvasLayer/foodLabel.text = "X : " + str(food)
+	$HUD/CanvasLayer/score.text = "Score : " +str(score)

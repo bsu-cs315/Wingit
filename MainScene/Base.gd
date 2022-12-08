@@ -13,15 +13,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$ProgressBar.value = (float(health)/maxHealth)*100
-	
-	
-	
-	
-	
-	
-	
-
-
-func processDeath():
-	
-	get_parent().get_node("HUD").lostHUD.visible = true
+	if health <= 0:
+		dead = true
