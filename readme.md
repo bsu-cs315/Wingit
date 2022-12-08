@@ -1,5 +1,5 @@
-### Wingin It 0.1.0
-- A solution to iteration1 in CS 315 by Andrew Dickinson
+### Wingin It 0.3.0
+- A solution to iteration3 in CS 315 by Andrew Dickinson
 - Made using the Godot 3.5
 ## How to play
 - Defend the base 
@@ -13,7 +13,7 @@
 ## Project Report 
 
 ## Reflection
-For the first iteration of this project, I had some set backs. I had this really cool image in my head of the game I wanted to make where it was in 3-D, had tons of interactibilty, and it look really amazing. I started with this in mind and ended up stoping and starting over with a much more simplictic design. This is because 3-D made programing a bit to complicated along with find good materials and assests for a 3d World. Moving forward, my project is looking a lot better, and I am excited to move onto the next iteration. 
+For this iteration I really tried to scale back a bit and gameify it up a lot. I added in a main menu, a lose state, and a score at the top. I also went back and fixed a lot of bugs from previous iterations. My hope for the future is to continue to work on this and make it an amazing portfolio piece. 
 
 ### Self-Assessment
 - [X] D-1: The repository contains a <code>README.md</code> file in its top-level directory.
@@ -31,4 +31,8 @@ For the first iteration of this project, I had some set backs. I had this really
 - [X] A-2: The game includes the conventional player experience loop of title, gameplay, and ending.
 - [X] A-3: Earn <em>N</em>*&lceil;<em>P</em>/2&rceil; stars, where <em>N</em> is the iteration number and <em>P</em> is the number of people on the team.
 
+<h3>Stars</h3>
+Include a dynamic (non-static) camera
+  The player has the abilty to move the camera
+ 
 Therefore this work merits an A
