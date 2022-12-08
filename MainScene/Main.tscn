@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/coinResourceMaker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainScene/Camera2D.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://MainScene/coin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://lootbox/lootboxLoot/metal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://lootbox/lootboxLoot/food.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MainScene/647614__nick-simon-adams__piano-background-5.wav" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/enemySquads/Enemy1Squad.tscn" type="PackedScene" id=11]
 
 [sub_resource type="TileSet" id=1]
@@ -341,5 +342,9 @@ position = Vector2( 246, 805 )
 
 [node name="KinematicBody2D3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 641, 1649 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
