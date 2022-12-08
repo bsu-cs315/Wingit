@@ -16,7 +16,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	$ProgressBar.value = (float(health)/maxHealth)*100
 	if health <=0:
 		mined = true

@@ -78,8 +78,8 @@ func _on_cannonBuyButton_mouse_exited():
 
 
 func _on_mainMenuButton_button_up():
-	get_tree().change_scene("res://MainMenu/mainMenu.tscn")
+	var _scene =get_tree().change_scene("res://MainMenu/mainMenu.tscn")
 
 
 func _on_restartButton_button_up():
-	get_tree().change_scene("res://MainScene/Main.tscn")
+	var _scene =get_tree().change_scene("res://MainScene/Main.tscn")
